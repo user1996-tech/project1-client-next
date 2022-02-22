@@ -17,7 +17,8 @@ import { getCookie, apiAddress } from "../public/global";
 // import { useNavigate, useParams } from "react-router-dom";
 import { useRouter } from "next/router";
 
-const DashboardScreen = () => {
+const DashboardScreen = ({ testVar }) => {
+  console.log(testVar);
   const [refresh, setRefresh] = useState(false);
   const [modalStatus, setModalStatus] = useState(false);
   const [keyData, setKeyData] = useState([]);
@@ -168,3 +169,11 @@ const DashboardScreen = () => {
 };
 
 export default DashboardScreen;
+
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      testVar: "ss",
+    }, // will be passed to the page component as props
+  };
+}

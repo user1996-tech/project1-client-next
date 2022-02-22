@@ -1,0 +1,29 @@
+.modal {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContentContainer {
+  max-width: 1500px;
+  margin-right: auto;
+  margin-left: auto;
+  color: black !important;
+  background-color: white;
+  padding: 40px 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modalContentContainer h1 {
+  margin-bottom: 20px;
+}

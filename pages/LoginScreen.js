@@ -41,7 +41,7 @@ const LoginScreen = () => {
         document.cookie = `id=${response.id}; expires=Thu, 01 Jan 2023 00:00:01 GMT;`;
 
         // navigate(`/dashboard`);
-        router.push("/DashboardScreen");
+        router.push("/dashboard");
       }
     }
   };

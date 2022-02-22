@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 // import "./DashboardScreen.css";
-import styles from "../styles/DashboardScreen.module.css";
+import styles from "../../styles/DashboardScreen.module.css";
 import {
   Table,
   TableBody,
@@ -12,8 +12,8 @@ import {
   TextField,
   Button,
 } from "@mui/material";
-import Modal from "./Modal";
-import { getCookie, apiAddress } from "../public/global";
+import Modal from "../Modal";
+import { getCookie, apiAddress } from "../../public/global";
 // import { useNavigate, useParams } from "react-router-dom";
 import { useRouter } from "next/router";
 
@@ -170,7 +170,7 @@ const DashboardScreen = ({ testVar }) => {
 
 export default DashboardScreen;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   return {
     props: {
       testVar: "ss",

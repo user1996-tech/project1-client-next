@@ -22,7 +22,7 @@ const Modal = ({ modalStatus, setModalStatus, router }) => {
   );
 
   const handleButton = () => {
-    router.push("/LoginScreen");
+    router.push("/");
   };
 
   useEffect(() => {

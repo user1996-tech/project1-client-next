@@ -1,14 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-// import "./LoginScreen.css";
-import styles from "../styles/LoginScreen.module.css";
-// import "../styles/LoginScreen.css";
-// import { useNavigate } from "react-router-dom";
-import { useRouter } from "next/router";
+import React, { useState } from "react";
+// import "./SignUpScreen.css";
+import styles from "../../styles/SignUpScreen.module.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { login, checkLoggedIn } from "../public/global";
+import { signUp } from "../../public/global";
+// import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 
-const LoginScreen = () => {
+const SignUpScreen = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -29,42 +28,26 @@ const LoginScreen = () => {
     }
 
     if (password !== "" && username !== "") {
-      const response = await login(username, password);
+      setUsername("");
+      setPassword("");
+
+      const response = await signUp(username, password);
       if (response === "error") {
-        setErrorMessage("Wrong username and password combination");
-        setUsername("");
-        setPassword("");
+        setErrorMessage("Username has already been taken, choose another!");
       } else {
         setErrorMessage("");
-
-        document.cookie = `username=${response.username}; expires=Thu, 01 Jan 2023 00:00:01 GMT;`;
-        document.cookie = `id=${response.id}; expires=Thu, 01 Jan 2023 00:00:01 GMT;`;
-
-        // navigate(`/dashboard`);
-        router.push("/dashboard");
+        // navigate("/");
+        router.push("/");
       }
     }
   };
-
-  useEffect(() => {
-    // checkLoggedIn(router);
-  }, []);
-
   return (
-    <div className={styles.loginScreen}>
-      <h1 className={styles.title}>Login</h1>
+    <div className={styles.signUpScreen}>
+      <h1 className={styles.title}>Sign Up</h1>
 
       <div className={styles.errorMessageContainer}>{errorMessage}</div>
       <form className={styles.form}>
         <TextField
-          name="username"
-          variant="filled"
-          label="Username"
-          focused
-          sx={{ input: { color: "white" } }}
-          InputLabelProps={{
-            className: styles.textfield_label,
-          }}
           value={username}
           onChange={(event) => {
             setUsername(event.target.value);
@@ -72,22 +55,28 @@ const LoginScreen = () => {
               setUsernameValid(false);
             }
           }}
+          variant="filled"
+          label="Username"
+          focused
+          sx={{ input: { color: "white" } }}
+          InputLabelProps={{
+            className: "textfield__label",
+          }}
           error={usernameValid}
         />
         <TextField
-          name="password"
-          variant="filled"
-          label="Password"
-          sx={{ input: { color: "white" } }}
-          InputLabelProps={{
-            className: styles.textfield_label,
-          }}
           value={password}
           onChange={(event) => {
             setPassword(event.target.value);
             if (passwordValid) {
               setPasswordValid(false);
             }
+          }}
+          variant="filled"
+          label="Password"
+          sx={{ input: { color: "white" } }}
+          InputLabelProps={{
+            className: "textfield__label",
           }}
           error={passwordValid}
         />
@@ -97,23 +86,23 @@ const LoginScreen = () => {
           onClick={handleSubmit}
           className={styles.button}
         >
-          Login
+          Sign Up
         </Button>
         <Button
-          type="button"
+          type="submit"
           variant="contained"
-          color="warning"
-          onClick={() => {
-            // navigate("/signup");
-            router.push("/signup");
-          }}
+          color="error"
           className={styles.button}
+          onClick={() => {
+            // navigate("/");
+            router.push("/");
+          }}
         >
-          Sign Up
+          Cancel
         </Button>
       </form>
     </div>
   );
 };
 
-export default LoginScreen;
+export default SignUpScreen;

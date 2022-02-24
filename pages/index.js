@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import LoginScreen from "./LoginScreen";
 
 export default function Home() {

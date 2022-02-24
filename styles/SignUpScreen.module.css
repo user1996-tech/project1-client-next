@@ -1,4 +1,4 @@
-.loginScreen {
+.signUpScreen {
   padding-top: 20px;
   padding-bottom: 50px;
   width: 100%;
@@ -6,7 +6,7 @@
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  background-color: #0a1929;
+  background-color: #3289e5;
   color: white;
 }
 
@@ -25,6 +25,10 @@
   color: red;
 }
 
+.Button {
+  width: 100px;
+}
+
 .input {
   color: white;
 }
@@ -37,6 +41,6 @@
   margin-bottom: 20px !important;
 }
 
-.button {
+form .button {
   margin-top: 10px !important;
 }
